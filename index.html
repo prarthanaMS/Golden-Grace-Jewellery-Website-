@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Grace - Premium Gold Jewelry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #d4af37 0%, #f7e98e 50%, #d4af37 100%);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #d4af37;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            min-height: calc(100vh - 80px);
+            padding: 2rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Home Page */
+        .hero {
+            background: linear-gradient(135deg, rgba(192, 162, 64, 0.1) 0%, rgba(185, 166, 39, 0.1) 100%);
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .featured-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+        }
+
+        .product-image {
+            height: 250px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #d4af37;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin: 1rem 0;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, #d4af37, #f7e98e);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Cart */
+        .cart-item {
+            background: #fff;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .cart-total {
+            background: linear-gradient(135deg, #d4af37, #f7e98e);
+            color: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        /* Forms */
+        .form-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        /* About Page */
+        .about-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .about-content h2 {
+            color: #d4af37;
+            margin-bottom: 0.1rem;
+            font-size: 22px;
+             line-height: 1.6
+        }
+
+        /* Contact Page */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .featured-products {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Golden Grace</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('products')">Products</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#" onclick="showPage('cart')" class="cart-icon">Cart <span class="cart-count" id="cartCount">0</span></a></li>
+            </ul>
+            <div class="auth-buttons" id="authButtons">
+                <a href="#" class="btn btn-secondary" onclick="showPage('login')">Login</a>
+                <a href="#" class="btn btn-primary" onclick="showPage('register')">Register</a>
+            </div>
+            <div class="auth-buttons" id="loggedInButtons" style="display: none;">
+                <span style="color: white; margin-right: 1rem;">Welcome, <span id="username"></span>!</span>
+                <a href="#" class="btn btn-secondary" onclick="logout()">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="container">
+            <section class="hero">
+                <h1>Golden Grace</h1>
+                <p>Discover the finest collection of premium gold jewelry crafted with elegance and precision</p>
+                <a href="#" class="btn btn-primary" onclick="showPage('products')">Shop Now</a>
+            </section>
+            
+            <h2 style="text-align: center; color: #d4af37 ; margin: 3rem 0;">Featured Products</h2>
+            <div class="featured-products">
+                <div class="product-card">
+<div class="product-image">
+  <img src="image/Ring.webp" alt="Gold Ring" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+</div>
+
+                    <div class="product-info">
+                        <h3>Gold Diamond Ring</h3>
+                        <p>Elegant 18K gold ring with premium diamonds</p>
+                        <div class="product-price">$1,299</div>
+                        <button class="add-to-cart" onclick="addToCart('Gold Diamond Ring', 1299)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+ <div class="product-image">
+  <img src="image/Necklace.png" alt="Necklace" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+</div>
+
+
+                    <div class="product-info">
+                        <h3>Pearl Necklace</h3>
+                        <p>Classic gold necklace with natural pearls</p>
+                        <div class="product-price">$899</div>
+                        <button class="add-to-cart" onclick="addToCart('Pearl Necklace', 899)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+<div class="product-image">
+  <img src="image/Bracelet.png" alt="Bracelet" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+</div>
+
+
+                    <div class="product-info">
+                        <h3>Gold Bracelet</h3>
+                        <p>Luxurious 22K gold bracelet for special occasions</p>
+                        <div class="product-price">$2,199</div>
+                        <button class="add-to-cart" onclick="addToCart('Gold Bracelet', 2199)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Page -->
+    <div id="products" class="page">
+        <div class="container">
+            <h1 style="text-align: center; color: #d4af37; margin: 2rem 0;">Our Products</h1>
+            <div class="featured-products">
+                <div class="product-card">
+                    <div class="product-image">
+  <img src="image/RINGS.jpg" alt="Gold Rings" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+</div>
+
+                    <div class="product-info">
+                        <h3>Gold Diamond Ring</h3>
+                        <p>Elegant 18K gold ring with premium diamonds</p>
+                        <div class="product-price">$1,299</div>
+                        <button class="add-to-cart" onclick="addToCart('Gold Diamond Ring', 1299)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+  <img src="image/HH.webp" alt="Jewelry Item" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+</div>
+
+                    <div class="product-info">
+                        <h3>Pearl Necklace</h3>
+                        <p>Classic gold necklace with natural pearls</p>
+                        <div class="product-price">$899</div>
+                        <button class="add-to-cart" onclick="addToCart('Pearl Necklace', 899)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                <div class="product-image">
+  <img src="image/22.jpg" alt="Jewelry Product" style="width: 100%; height: auto; border-radius: 10px;">
+</div>
+
+
+                    <div class="product-info">
+                        <h3>Gold Bracelet</h3>
+                        <p>Luxurious 22K gold bracelet for special occasions</p>
+                        <div class="product-price">$2,199</div>
+                        <button class="add-to-cart" onclick="addToCart('Gold Bracelet', 2199)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                <div class="product-image">
+  <img src="image/earrings.jpg" alt="Earrings" style="width: 100%; height: auto; border-radius: 10px;">
+</div>
+
+
+                    <div class="product-info">
+                        <h3>Gold Earrings</h3>
+                        <p>Beautiful gold earrings with intricate design</p>
+                        <div class="product-price">$599</div>
+                        <button class="add-to-cart" onclick="addToCart('Gold Earrings', 599)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                <div class="product-image">
+  <img src="image/000.jpg" alt="Jewelry Product" style="width: 100%; height: auto; border-radius: 10px;">
+</div>
+
+                    <div class="product-info">
+                        <h3>Diamond Pendant</h3>
+                        <p>Stunning diamond pendant on gold chain</p>
+                        <div class="product-price">$1,599</div>
+                        <button class="add-to-cart" onclick="addToCart('Diamond Pendant', 1599)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                <div class="product-image">
+  <img src="image/003.png" alt="Jewelry Product" style="width: 100%; height: auto; border-radius: 10px;">
+</div>
+
+                    <div class="product-info">
+                        <h3>Gold Bangles Set</h3>
+                        <p>Set of 4 traditional gold bangles</p>
+                        <div class="product-price">$1,899</div>
+                        <button class="add-to-cart" onclick="addToCart('Gold Bangles Set', 1899)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="container">
+            <div class="about-content">
+                <h1 style="text-align: center; color: #d4af37; margin-bottom: 2rem;">About Golden Grace</h1>
+                <h2>Our Story</h2>
+                <p>Golden Grace has been crafting exquisite gold jewelry for over three decades. Founded with a passion for creating timeless pieces that celebrate life's most precious moments, we have established ourselves as a trusted name in luxury jewelry.</p>
+
+
+
+                
+                <h2>Our Commitment</h2>
+                <p>We are committed to using only the finest materials and traditional craftsmanship techniques. Each piece is carefully designed and meticulously crafted by our skilled artisans who bring decades of experience to every creation.</p>
+
+                <h2>Quality Assurance</h2>
+                <p>Every piece of jewelry that bears the Golden Grace name undergoes rigorous quality checks. We use certified gold and authentic gemstones, ensuring that each piece meets our exacting standards for quality and beauty.</p>
+                
+                <h2>Our Vision</h2>
+                <p>To be the premier destination for luxury gold jewelry, creating pieces that not only enhance beauty but also carry emotional significance and lasting value for generations to come.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <div class="container">
+            <h1 style="text-align: center; color: #d4af37; margin: 2rem 0;">Contact Us</h1>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>📍 Visit Our Store</h3>
+                    <p>123 Golden Street<br>Jewelry District<br>New York, NY 10001</p>
+                </div>
+                <div class="contact-card">
+                    <h3>📞 Call Us</h3>
+                    <p>Phone: (555) 123-4567<br>Toll Free: 1-800-GOLDEN-1</p>
+                </div>
+                <div class="contact-card">
+                    <h3>✉️ Email Us</h3>
+                    <p>info@goldengrace.com<br>uxoragoldengrace</p>
+                </div>
+                <div class="contact-card">
+                    <h3>🕐 Store Hours</h3>
+                    <p>Mon-Sat: 9:00 AM - 8:00 PM<br>Sunday: 11:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <h2 style="text-align: center; color: #d4af37; margin-bottom: 2rem;">Send us a Message</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="contactName">Name</label>
+                        <input type="text" id="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" rows="5" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: inherit; resize: vertical;" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Page -->
+    <div id="cart" class="page">
+        <div class="container">
+            <h1 style="text-align: center; color: #d4af37; margin: 2rem 0;">Shopping Cart</h1>
+            <div id="cartItems">
+                <p style="text-align: center; color: #666; font-size: 1.2rem; margin: 3rem 0;">Your cart is empty</p>
+            </div>
+            <div id="cartTotal" style="display: none;" class="cart-total">
+                <h2>Total: $<span id="totalAmount">0</span></h2>
+                <button class="btn btn-primary" style="margin-top: 1rem; background: white; color: #d4af37;">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login" class="page">
+        <div class="container">
+            <div class="form-container">
+                <h1 style="text-align: center; color: #d4af37; margin-bottom: 2rem;">Login</h1>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Don't have an account? <a href="#" onclick="showPage('register')" style="color: #d4af37;">Register here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Page -->
+    <div id="register" class="page">
+        <div class="container">
+            <div class="form-container">
+                <h1 style="text-align: center; color: #d4af37; margin-bottom: 2rem;">Register</h1>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerName">Full Name</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">Confirm Password</label>
+                        <input type="password" id="registerConfirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Already have an account? <a href="#" onclick="showPage('login')" style="color: #d4af37;">Login here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentUser = null;
+        let cart = [];
+
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Cart functionality
+        function addToCart(productName, price) {
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCartDisplay();
+            updateCartCount();
+            
+            // Show success message
+            alert(`${productName} added to cart!`);
+        }
+
+        function removeFromCart(productName) {
+            cart = cart.filter(item => item.name !== productName);
+            updateCartDisplay();
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartTotalContainer = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: #666; font-size: 1.2rem; margin: 3rem 0;">Your cart is empty</p>';
+                cartTotalContainer.style.display = 'none';
+                return;
+            }
+            
+            let cartHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                cartHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <h3>${item.name}</h3>
+                            <p>$${item.price} x ${item.quantity} = $${itemTotal}</p>
+                        </div>
+                        <div>
+                            <button onclick="removeFromCart('${item.name}')" style="background: #ff4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">Remove</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItemsContainer.innerHTML = cartHTML;
+            document.getElementById('totalAmount').textContent = total;
+            cartTotalContainer.style.display = 'block';
+        }
+
+        // Authentication
+        function login(email, password) {
+            // Simple demo login - in real app, this would validate against a server
+            if (email && password) {
+                currentUser = {
+                    name: email.split('@')[0],
+                    email: email
+                };
+                
+                updateAuthDisplay();
+                showPage('home');
+                alert('Login successful!');
+                return true;
+            }
+            return false;
+        }
+
+        function logout() {
+            currentUser = null;
+            cart = [];
+            updateAuthDisplay();
+            updateCartCount();
+            updateCartDisplay();
+            showPage('home');
+            alert('Logged out successfully!');
+        }
+
+        function updateAuthDisplay() {
+            const authButtons = document.getElementById('authButtons');
+            const loggedInButtons = document.getElementById('loggedInButtons');
+            const username = document.getElementById('username');
+            
+            if (currentUser) {
+                authButtons.style.display = 'none';
+                loggedInButtons.style.display = 'flex';
+                username.textContent = currentUser.name;
+            } else {
+                authButtons.style.display = 'flex';
+                loggedInButtons.style.display = 'none';
+            }
+        }
+
+        // Form handlers
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (login(email, password)) {
+                document.getElementById('loginForm').reset();
+            } else {
+                alert('Please enter valid credentials');
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Simple demo registration
+            currentUser = {
+                name: name,
+                email: email
+            };
+            
+            updateAuthDisplay();
+            showPage('home');
+            alert('Registration successful! Welcome to Golden Grace!');
+            document.getElementById('registerForm').reset();
+        });
+
+        // Initialize page
+        updateAuthDisplay();
+        updateCartCount();
+    </script>
+</body>
+</html>

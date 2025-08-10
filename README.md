@@ -2,6 +2,7 @@
   ✨ Golden Grace Jewellery Website
 </p>
 
+
 <p align="center" style="font-style: italic; font-size: 1.2em; margin-top: 0;">
   Welcome to <strong>Golden Grace</strong>,<br/>
   your premium online destination for exquisite gold jewelry collections.<br/>
@@ -111,3 +112,4 @@
 <p align="center" style="font-style: italic; font-size: smaller;">
   📜 Licensed under the <strong>MIT License</strong> — feel free to use, modify, and share.
 </p>
+

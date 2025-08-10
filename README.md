@@ -1,4 +1,4 @@
-# ✨ Golden Grace Jewellery Website
+<h1 align="center">✨ Golden Grace Jewellery Website</h1>
 
 <p align="center">
   <em>
@@ -8,7 +8,7 @@
   </em>
 </p>
 
----
+<hr />
 
 <p align="center">
   🌐 <strong>Visit the Live Website:</strong><br/>
@@ -16,8 +16,6 @@
     https://prarthanams.github.io/Golden-Grace-Jewellery-Website-/
   </a>
 </p>
-
----
 
 <p align="center">
   <a href="https://prarthanams.github.io/Golden-Grace-Jewellery-Website-/" target="_blank" rel="noopener noreferrer">
@@ -28,30 +26,67 @@
   <img src="https://img.shields.io/badge/JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
 </p>
 
----
+<h2 align="center">✨ Features</h2>
 
-## ✨ Features
+<p align="center">
+  💎 Elegant and luxurious display of gold jewelry collections<br/>
+  📱 Fully responsive design for flawless browsing on all devices<br/>
+  🎨 Modern UI with smooth animations and intuitive navigation<br/>
+  ⚡ Fast loading times and optimized performance<br/>
+  🛠 Built using HTML5, CSS3, and JavaScript
+</p>
 
-- 💎 Elegant and luxurious display of gold jewelry collections  
-- 📱 Fully responsive design for flawless browsing on all devices  
-- 🎨 Modern UI with smooth animations and intuitive navigation  
-- ⚡ Fast loading times and optimized performance  
-- 🛠 Built using HTML5, CSS3, and JavaScript  
+<h2 align="center">🛠 Technologies Used</h2>
 
----
+<table align="center">
+  <tr>
+    <th>Technology</th>
+    <th>Role</th>
+  </tr>
+  <tr>
+    <td>HTML5</td>
+    <td>Semantic structure and content</td>
+  </tr>
+  <tr>
+    <td>CSS3</td>
+    <td>Styling, responsive layout, and animations</td>
+  </tr>
+  <tr>
+    <td>JavaScript</td>
+    <td>Interactive features and dynamic content</td>
+  </tr>
+</table>
 
-## 🛠 Technologies Used
+<h2 align="center">🚀 Getting Started</h2>
 
-| Technology | Role                          |
-|------------|-------------------------------|
-| HTML5      | Semantic structure and content |
-| CSS3       | Styling, responsive layout, and animations |
-| JavaScript | Interactive features and dynamic content |
+<p align="center">
+  1️⃣ <strong>Clone the repository</strong><br/>
+  <code>git clone https://github.com/prarthanams/Golden-Grace-Jewellery-Website-.git</code>
+</p>
 
----
+<p align="center">
+  2️⃣ <strong>Navigate to the project folder</strong><br/>
+  <code>cd Golden-Grace-Jewellery-Website-</code>
+</p>
 
-## 🚀 Getting Started
+<p align="center">
+  3️⃣ <strong>Open the website</strong><br/>
+  Open <code>index.html</code> in your preferred web browser.
+</p>
 
-1️⃣ **Clone the repository**  
-```bash
-git clone https://github.com/prarthanams/Golden-Grace-Jewellery-Website-.git
+<h2 align="center">✨ Developed & Designed By</h2>
+
+<p align="center">
+  <strong>Prarthana</strong><br/>
+  <em>Dedicated to crafting elegant and user-friendly web experiences.</em>
+</p>
+
+<h2 align="center">📜 License</h2>
+
+<p align="center">
+  This project is licensed under the <strong>MIT License</strong> — feel free to use, modify, and share.
+</p>
+
+<p align="center" style="font-style: italic; font-size: smaller;">
+  “Experience elegance with every click at Golden Grace.” 💫
+</p>

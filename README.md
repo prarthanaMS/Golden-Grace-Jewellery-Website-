@@ -1,5 +1,5 @@
 <p align="center">
-  <strong style="font-size: 3em;">✨ Golden Grace Jewellery Website</strong>
+  <strong style="font-size: 10em;">✨ Golden Grace Jewellery Website</strong>
 </p>
 
 

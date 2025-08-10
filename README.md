@@ -40,26 +40,6 @@
 
 ---
 
-## 📂 Project Structure  
-Golden-Grace-Jewellery-Website/
-├── index.html # Homepage with featured products
-├── about.html # About the brand page
-├── contact.html # Contact form & store info
-├── cart.html # Shopping cart interface
-├── login.html # User login page
-├── register.html # User registration page
-├── assets/ # Images, fonts, icons, etc.
-│ ├── css/
-│ ├── js/
-│ └── images/
-├── css/
-│ └── style.css # Main stylesheet
-└── js/
-└── main.js # Main JavaScript file
-
----
-
-
 ## ✨ **Designed & Developed By**
 
 **Prarthana**  
